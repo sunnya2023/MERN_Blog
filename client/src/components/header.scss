@@ -1,0 +1,152 @@
+@import "../style/style.scss";
+
+nav {
+  width: 100%;
+  height: 3.95rem;
+  padding: 0.625rem 1rem;
+  border-bottom: 2px solid $gray1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .logo {
+    font-size: 1.25rem;
+    font-weight: 600;
+    span {
+      background: linear-gradient(to right, $indigo6, $pink6);
+      border-radius: 0.5rem;
+      padding: 0.2rem 0.6rem;
+      color: $white;
+    }
+  }
+
+  form {
+    display: flex;
+    align-items: center;
+    width: 15rem;
+    position: relative;
+
+    input {
+      display: none;
+
+      @include md {
+        display: inline;
+        width: 100%;
+        border: 1px solid $gray4;
+        border-radius: 0.5rem;
+        padding: 0.5rem;
+      }
+
+      &:focus {
+        outline: 1px solid $indigo4;
+      }
+    }
+    .btn {
+      display: none;
+      @include md {
+        display: inline;
+        position: absolute;
+        right: 10px;
+      }
+    }
+  }
+  .search_btn {
+    width: 2.5rem;
+    height: 2.5rem;
+    padding: 0.6rem 0.825rem;
+    border: 1px solid $gray3;
+    border-radius: 2.5rem;
+
+    @include md {
+      display: none;
+    }
+  }
+
+  .link-menu {
+    display: none;
+    @include sm {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
+
+      a {
+        padding: 0 1rem 0;
+
+        &.active {
+          color: $purple2;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+
+  .user-menu {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-left: 1rem;
+
+    .moon_btn {
+      display: none;
+      width: 2.5rem;
+      height: 2.5rem;
+      padding: 0.6rem 0.825rem;
+      border: 1px solid $gray3;
+      border-radius: 2.5rem;
+
+      &:hover {
+        background-color: $gray2;
+        color: $cyan9;
+        // border: 1px solid $indigo6;
+      }
+      @include xs {
+        display: inline;
+      }
+    }
+
+    a {
+      padding: 0.8rem 1rem;
+      border-radius: 0.5rem;
+      background: linear-gradient(150deg, $purple1, $cyan4);
+      font-size: 0.875rem;
+      color: $white;
+      flex-shrink: 0;
+    }
+
+    .menu-icon {
+      font-size: 2.25rem;
+      text-align: center;
+      color: $gray6;
+      margin-top: 5px;
+      transition: all 1s ease;
+
+      &:hover {
+        transform: scale(1.2);
+      }
+      @include sm {
+        display: none;
+      }
+    }
+  }
+  .dropdown_munu {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    position: absolute;
+    right: 0;
+    top: 4rem;
+    width: 15.8rem;
+    background: $gray0;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    a {
+      &.active {
+        color: $purple2;
+        font-weight: 600;
+      }
+    }
+    @include sm {
+      display: none;
+    }
+  }
+}

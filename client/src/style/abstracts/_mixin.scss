@@ -1,0 +1,36 @@
+@mixin hide {
+  overflow: hidden;
+  display: block;
+  position: absolute;
+  border: 0;
+  width: 1px;
+  height: 1px;
+  clip: rect(1px, 1px, 1px, 1px);
+  //   clip-path: inset(50%);
+}
+
+@mixin xs {
+  @media (min-width: 576px) {
+    @content;
+  }
+}
+@mixin sm {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+@mixin md {
+  @media (min-width: 992px) {
+    @content;
+  }
+}
+@mixin lg {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+@mixin xl {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
