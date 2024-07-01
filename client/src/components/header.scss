@@ -8,12 +8,13 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex: 1 1 0;
   .logo {
     font-size: 1.25rem;
     font-weight: 600;
     span {
       background: linear-gradient(to right, $indigo6, $pink6);
-      border-radius: 0.5rem;
+      border-radius: 0.6rem;
       padding: 0.2rem 0.6rem;
       color: $white;
     }

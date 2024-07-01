@@ -1,5 +1,5 @@
 @import "./variable";
-
+@import url("https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@2.0/nanumsquare.css");
 /* box-sizing 규칙을 명시합니다. */
 *,
 *::before,
@@ -114,6 +114,7 @@ body {
   line-height: 1;
   background-color: $white;
   color: $dark9;
+  font-family: "NanumSquare", sans-serif;
 }
 ol,
 ul {

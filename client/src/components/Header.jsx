@@ -45,7 +45,7 @@ export default function Header() {
         <button className="moon_btn">
           <FaMoon />
         </button>
-        <Link to="/sign-in">회원가입</Link>
+        <Link to="/login">로그인</Link>
         {/* <Link to="/sign-in">Sign Up</Link> */}
 
         <button className="menu-icon" onClick={handleOpenMenu}>
