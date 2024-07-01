@@ -106,11 +106,14 @@ nav {
 
     a {
       padding: 0.8rem 1rem;
+      outline: 1.5px solid $cyan9;
       border-radius: 0.5rem;
-      background: linear-gradient(150deg, $purple1, $cyan4);
       font-size: 0.875rem;
-      color: $white;
       flex-shrink: 0;
+      &:hover {
+        background: linear-gradient(150deg, $purple1, $cyan4);
+        color: $white;
+      }
     }
 
     .menu-icon {
