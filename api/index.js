@@ -16,15 +16,15 @@ mongoose
   });
 
 const app = express();
-
+const PORT = 5000;
 app.use(express.json());
 
-app.listen(3000, () => {
-  console.log("Server is running on port 3000!");
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}!`);
 });
 
-app.use("/user", userRoutes);
-app.use("/auth", authRoutes);
+app.use("/api/user", userRoutes);
+app.use("/api/auth", authRoutes);
 
 // 에러 미들웨어
 app.use((err, req, res, next) => {
