@@ -13,7 +13,7 @@ export default function Header() {
   };
   const path = useLocation().pathname;
   return (
-    <nav>
+    <div className="navbar">
       <Link to="/" className="logo">
         <span>Sunny's</span>
         Blog
@@ -69,6 +69,6 @@ export default function Header() {
           </Link>
         </div>
       )}
-    </nav>
+    </div>
   );
 }

@@ -1,0 +1,81 @@
+@import "../style/style.scss";
+
+.footer {
+  width: 100%;
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  border-top: 2px solid $cyan5;
+  border-radius: 0.5rem;
+  padding: 1.5rem 1rem;
+
+  .top {
+    // padding: 1.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+
+    @include xs {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .left {
+      display: flex;
+      flex: 1 1 0;
+      flex-direction: column;
+      justify-content: center;
+      gap: 1rem;
+
+      .logo {
+        font-size: 1.25rem;
+        font-weight: bold;
+        span {
+          background: linear-gradient(to right, $indigo6, $pink6);
+          border-radius: 0.4rem;
+          padding: 0.2rem 0.6rem;
+          color: $white;
+        }
+      }
+    }
+
+    .right {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+
+      .menu {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        color: $gray7;
+        h1 {
+          font-size: 0.9rem;
+          font-weight: bold;
+        }
+        a {
+          font-size: 0.825rem;
+        }
+      }
+    }
+  }
+  .bottom {
+    display: flex;
+    justify-content: space-between;
+    flex: 1 0 0;
+    span {
+      font-size: 0.75rem;
+    }
+    .sns_icon {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      a {
+        font-size: 1.25rem;
+        color: $gray6;
+      }
+    }
+  }
+}
