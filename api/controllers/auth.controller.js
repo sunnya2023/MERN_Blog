@@ -1,6 +1,7 @@
 import User from "../models/user.model.js";
 import bcrypt from "bcryptjs";
 import { errorHandler } from "../utills/error.js";
+import jwt from "jsonwebtoken";
 
 export const singup = async (req, res, next) => {
   const { username, email, password } = req.body;
@@ -14,12 +15,12 @@ export const singup = async (req, res, next) => {
     password === ""
   ) {
     // return res.status(400).json({ message: "All fields are required" });
-    next(errorHandler(400, "정보를 입력해주세요"));
+    return next(errorHandler(400, "정보를 입력해주세요"));
   }
 
   const existingUser = await User.findOne({ email });
   if (existingUser) {
-    next(errorHandler(401, "이미 사용중인 이메일입니다."));
+    return next(errorHandler(401, "이미 사용중인 이메일입니다."));
   }
 
   const salt = await bcrypt.genSalt(10);
@@ -34,6 +35,42 @@ export const singup = async (req, res, next) => {
   try {
     await newUser.save();
     res.status(200).json("Signup successful");
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const login = async (req, res, next) => {
+  const { email, password } = req.body;
+  if (!email || !password || email === "" || password === "") {
+    next(errorHandler(400, "이메일 또는 비밀번호를 확인해주세요"));
+  }
+  try {
+    const validUser = await User.findOne({ email });
+    if (!validUser) {
+      return next(errorHandler(404, "등록된 이메일이 아닙니다"));
+    }
+
+    const validPassword = await bcrypt.compare(password, validUser.password);
+    if (!validPassword) {
+      return next(errorHandler(400, "비밀번호가 일치하지 않습니다"));
+    }
+    const token = jwt.sign({ id: validUser._id }, process.env.JWT_SECRET, {
+      expiresIn: "30d",
+    });
+
+    // 비밀번호 제외하기
+    const { password: pass, ...rest } = validUser._doc;
+
+    res
+      .status(200)
+      .cookie("access_token", token, {
+        maxAge: 30 * 24 * 60 * 60 * 1000,
+        httpOnly: true,
+        sameSite: "strict",
+        secure: process.env.NODE_ENV !== "development",
+      })
+      .json(rest);
   } catch (error) {
     next(error);
   }
