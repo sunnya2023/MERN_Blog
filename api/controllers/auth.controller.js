@@ -43,7 +43,7 @@ export const singup = async (req, res, next) => {
 export const login = async (req, res, next) => {
   const { email, password } = req.body;
   if (!email || !password || email === "" || password === "") {
-    next(errorHandler(400, "이메일 또는 비밀번호를 확인해주세요"));
+    next(errorHandler(400, "이메일 또는 비밀번호를 입력해주세요."));
   }
   try {
     const validUser = await User.findOne({ email });

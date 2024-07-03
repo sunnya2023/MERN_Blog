@@ -1,4 +1,4 @@
-import "./header.scss";
+import "../style/component_style/header.scss";
 import { Link, useLocation } from "react-router-dom";
 import { IoSearch } from "react-icons/io5";
 import { FaMoon } from "react-icons/fa";

@@ -1,4 +1,4 @@
-import "./footer.scss";
+import "../style/component_style/footer.scss";
 import { Link } from "react-router-dom";
 import { FaFacebook } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";

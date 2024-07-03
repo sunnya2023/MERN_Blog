@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import "../style/page_style/signup.scss";
 import { useState } from "react";
 
-export default function Signup() {
+export default function Login() {
   const [formData, setFormData] = useState({});
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState(null);
@@ -16,7 +16,7 @@ export default function Signup() {
 
     try {
       setLoading(true);
-      const res = await fetch("/api/auth/signup", {
+      const res = await fetch("/api/auth/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -30,7 +30,7 @@ export default function Signup() {
       }
       setLoading(false);
       if (res.ok) {
-        navigate("/login");
+        navigate("/");
       }
     } catch (error) {
       console.log(error.message);
@@ -55,16 +55,6 @@ export default function Signup() {
         <div className="right">
           <form onSubmit={handleSubmit}>
             <div className="formdata">
-              <label htmlFor="username">이름</label>
-              <input
-                id="username"
-                name="username"
-                type="text"
-                placeholder="이름을 입력해 주세요"
-                onChange={handleChange}
-              />
-            </div>
-            <div className="formdata">
               <label htmlFor="email">이메일</label>
               <input
                 id="email"
@@ -85,12 +75,12 @@ export default function Signup() {
               />
             </div>
             <button type="submit" disabled={loading}>
-              {loading ? "로딩중" : "회원가입"}
+              {loading ? "로딩중" : "로그인"}
             </button>
           </form>
 
           <span>
-            이미 계정이 있으신가요? <Link to="/login">로그인</Link>
+            아직 회원이 아니세요? <Link to="/sign-up">회원가입</Link>
           </span>
           {errorMsg && <div className="error">{errorMsg}</div>}
         </div>
