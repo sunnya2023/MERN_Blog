@@ -32,10 +32,10 @@
         font-size: 1.825rem;
         font-weight: bold;
         span {
-          background: linear-gradient(to right, $indigo6, $pink6);
+          background: var(--logo);
           border-radius: 0.4rem;
           padding: 0.2rem 0.6rem;
-          color: $white;
+          color: var(--logoText);
         }
       }
       p {
@@ -70,21 +70,24 @@
           input {
             width: 100%;
             border-radius: 0.5rem;
-            border: 2px solid $gray3;
+            border: 2px solid var(--gray3);
             padding: 0.825rem;
+            background: var(--inputBg);
+            color: var(--textColor);
+
             &::placeholder {
               font-size: 0.75rem;
             }
             &:focus {
-              outline: 1px solid $indigo4;
+              border: 2px solid var(--indigo4);
             }
           }
         }
-        button {
-          background: linear-gradient(to right, $indigo6, $pink6);
+        .btn {
+          background: var(--logo);
           border-radius: 0.3rem;
           padding: 0.825rem;
-          color: $white;
+          color: var(--logoText);
           font-weight: bold;
         }
       }
@@ -94,13 +97,13 @@
         margin-top: 0.825rem;
         font-size: 0.825rem;
         a {
-          color: $indigo6;
+          color: var(--indigo6);
           font-weight: bold;
         }
       }
       .error {
         margin-top: 0.825rem;
-        background: $tint;
+        background: var(--pink3);
         color: red;
         padding: 0.5rem;
         border-radius: 0.3rem;

@@ -1,0 +1,327 @@
+@charset "UTF-8";
+@import url("https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@2.0/nanumsquare.css");
+@font-face {
+  font-family: "KyoboHand";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/KyoboHand.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+:root {
+  --bgColor: #ffff;
+  --navbarBg: #fefefe;
+  --borderLine: #e4e7ea;
+  --textColor: #141414;
+  --logoText: #ffff;
+  --inputBg: #f9fbfa;
+  --gray1: #f1f3f5;
+  --gray2: #e9ecef;
+  --gray3: #dee2e6;
+  --gray4: #ced4da;
+  --gray5: #adb5bd;
+  --gray6: #868e96;
+  --indigo4: #748ffc;
+  --indigo6: #4c6ef5;
+  --indigo7: #008cff;
+  --pink3: #fce8e8;
+  --pink4: #ff8a4c;
+  --pink5: #e74694;
+  --pink6: #e64980;
+  --pink7: #e100ff;
+  --cyan4: #13b9b9;
+  --cyan5: #438e96;
+  --cyan9: #0f7695;
+  --logo: linear-gradient(to right, var(--indigo6), var(--pink6));
+  --googleBtn: linear-gradient(to bottom, var(--pink4), var(--pink5));
+  --borderOuline: linear-gradient(
+    to bottom right,
+    var(--indigo7),
+    var(--pink7)
+  );
+}
+
+.dark {
+  --bgColor: #0f172a;
+  --textColor: #ffff;
+  --navbarBg: #1f2937;
+  --borderLine: #343e4f;
+  --inputBg: #374150;
+}
+
+/* box-sizing 규칙을 명시합니다. */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* 폰트 크기의 팽창을 방지합니다. */
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+  background: var(--bgColor);
+  color: var(--textColor);
+  font-family: "KyoboHand", sans-serif;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+input,
+button {
+  background: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.signup {
+  width: 100%;
+  height: 100vh;
+  margin: 3rem auto;
+}
+.signup .content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 0 2rem 0;
+}
+@media (min-width: 768px) {
+  .signup .content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+}
+.signup .content .left {
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+}
+@media (min-width: 768px) {
+  .signup .content .left {
+    align-items: center;
+  }
+}
+.signup .content .left .logo {
+  font-size: 1.825rem;
+  font-weight: bold;
+}
+.signup .content .left .logo span {
+  background: var(--logo);
+  border-radius: 0.4rem;
+  padding: 0.2rem 0.6rem;
+  color: var(--logoText);
+}
+.signup .content .left p {
+  margin-top: 0.2rem;
+  font-size: 0.85rem;
+  line-height: 1.5rem;
+}
+@media (min-width: 768px) {
+  .signup .content .left p {
+    padding-left: 2.5rem;
+  }
+}
+.signup .content .right {
+  flex: 1 1 0;
+  margin-top: 1.5rem;
+}
+.signup .content .right form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+@media (min-width: 768px) {
+  .signup .content .right form {
+    max-width: 22.625rem;
+  }
+}
+.signup .content .right form .formdata {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.signup .content .right form .formdata label {
+  font-size: 0.75rem;
+  font-weight: bold;
+}
+.signup .content .right form .formdata input {
+  width: 100%;
+  border-radius: 0.5rem;
+  border: 2px solid var(--gray3);
+  padding: 0.825rem;
+  background: var(--inputBg);
+  color: var(--textColor);
+}
+.signup .content .right form .formdata input::-moz-placeholder {
+  font-size: 0.75rem;
+}
+.signup .content .right form .formdata input::placeholder {
+  font-size: 0.75rem;
+}
+.signup .content .right form .formdata input:focus {
+  border: 2px solid var(--indigo4);
+}
+.signup .content .right form .btn {
+  background: var(--logo);
+  border-radius: 0.3rem;
+  padding: 0.825rem;
+  color: var(--logoText);
+  font-weight: bold;
+}
+.signup .content .right span {
+  display: block;
+  margin-top: 0.825rem;
+  font-size: 0.825rem;
+}
+.signup .content .right span a {
+  color: var(--indigo6);
+  font-weight: bold;
+}
+.signup .content .right .error {
+  margin-top: 0.825rem;
+  background: var(--pink3);
+  color: red;
+  padding: 0.5rem;
+  border-radius: 0.3rem;
+  font-size: 0.825rem;
+}
+@media (min-width: 768px) {
+  .signup .content .right .error {
+    max-width: 22.625rem;
+  }
+}/*# sourceMappingURL=signup.css.map */

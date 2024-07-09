@@ -1,11 +1,12 @@
 import "../style/component_style/header.scss";
 import { Link, useLocation } from "react-router-dom";
 import { IoSearch } from "react-icons/io5";
-import { FaMoon } from "react-icons/fa";
+import { FaMoon, FaSun } from "react-icons/fa";
 import { IoMenu } from "react-icons/io5";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { IoClose } from "react-icons/io5";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { toggleTheme } from "../redux/theme/themeSlice";
 
 export default function Header() {
   const [openmenu, setOpenMenu] = useState(false);
@@ -14,7 +15,18 @@ export default function Header() {
   };
   const path = useLocation().pathname;
   const { currentUser } = useSelector((state) => state.user);
+  const { theme } = useSelector((state) => state.theme);
+  const dispatch = useDispatch();
+
   const [profileInfo, setProfileInfo] = useState(false);
+  useEffect(() => {
+    if (theme === "dark") {
+      document.body.classList.add("dark");
+    } else {
+      document.body.classList.remove("dark");
+    }
+  }, [theme]);
+
   return (
     <div className="navbar">
       <Link to="/" className="logo">
@@ -45,8 +57,8 @@ export default function Header() {
       </div>
 
       <div className="user-menu">
-        <button className="moon_btn">
-          <FaMoon />
+        <button className="moon_btn" onClick={() => dispatch(toggleTheme())}>
+          {theme === "light" ? <FaSun /> : <FaMoon />}
         </button>
 
         {currentUser ? (

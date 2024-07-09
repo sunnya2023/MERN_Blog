@@ -1,0 +1,407 @@
+@charset "UTF-8";
+@import url("https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@2.0/nanumsquare.css");
+@font-face {
+  font-family: "KyoboHand";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/KyoboHand.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+:root {
+  --bgColor: #ffff;
+  --navbarBg: #fefefe;
+  --borderLine: #e4e7ea;
+  --textColor: #141414;
+  --logoText: #ffff;
+  --inputBg: #f9fbfa;
+  --gray1: #f1f3f5;
+  --gray2: #e9ecef;
+  --gray3: #dee2e6;
+  --gray4: #ced4da;
+  --gray5: #adb5bd;
+  --gray6: #868e96;
+  --indigo4: #748ffc;
+  --indigo6: #4c6ef5;
+  --indigo7: #008cff;
+  --pink3: #fce8e8;
+  --pink4: #ff8a4c;
+  --pink5: #e74694;
+  --pink6: #e64980;
+  --pink7: #e100ff;
+  --cyan4: #13b9b9;
+  --cyan5: #438e96;
+  --cyan9: #0f7695;
+  --logo: linear-gradient(to right, var(--indigo6), var(--pink6));
+  --googleBtn: linear-gradient(to bottom, var(--pink4), var(--pink5));
+  --borderOuline: linear-gradient(
+    to bottom right,
+    var(--indigo7),
+    var(--pink7)
+  );
+}
+
+.dark {
+  --bgColor: #0f172a;
+  --textColor: #ffff;
+  --navbarBg: #1f2937;
+  --borderLine: #343e4f;
+  --inputBg: #374150;
+}
+
+/* box-sizing 규칙을 명시합니다. */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* 폰트 크기의 팽창을 방지합니다. */
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+  background: var(--bgColor);
+  color: var(--textColor);
+  font-family: "KyoboHand", sans-serif;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+input,
+button {
+  background: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.navbar {
+  width: 100%;
+  height: 3.95rem;
+  padding: 0.625rem 1rem;
+  border-bottom: 1px solid var(--borderLine);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1 1 0;
+  background: var(--navbarBg);
+}
+.navbar .logo {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--textColor);
+}
+.navbar .logo span {
+  background: var(--logo);
+  border-radius: 0.6rem;
+  padding: 0.2rem 0.6rem;
+  color: var(--logoText);
+}
+.navbar form {
+  display: flex;
+  align-items: center;
+  width: 15rem;
+  position: relative;
+}
+.navbar form input {
+  display: none;
+  background: var(--inputBg);
+  color: var(--textColor);
+}
+@media (min-width: 992px) {
+  .navbar form input {
+    display: inline;
+    width: 100%;
+    border: 1px solid var(--gray4);
+    border-radius: 0.5rem;
+    padding: 0.7rem;
+  }
+}
+.navbar form input:focus {
+  outline: 1px solid var(--indigo4);
+}
+.navbar form .btn {
+  display: none;
+  color: var(--textColor);
+}
+@media (min-width: 992px) {
+  .navbar form .btn {
+    display: inline;
+    position: absolute;
+    right: 10px;
+  }
+}
+.navbar .search_btn {
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0.6rem 0.825rem;
+  border: 1px solid var(--gray3);
+  border-radius: 2.5rem;
+  color: var(--textColor);
+}
+@media (min-width: 992px) {
+  .navbar .search_btn {
+    display: none;
+  }
+}
+.navbar .link-menu {
+  display: none;
+}
+@media (min-width: 768px) {
+  .navbar .link-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+  }
+  .navbar .link-menu a {
+    padding: 0 1rem 0;
+    transition: all 0.5s ease-out;
+  }
+  .navbar .link-menu a:hover {
+    transform: scale(1.1);
+  }
+  .navbar .link-menu a.active {
+    font-weight: bold;
+  }
+}
+.navbar .user-menu {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-left: 1rem;
+  z-index: 1000;
+}
+.navbar .user-menu .moon_btn {
+  display: none;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0.6rem 0.825rem;
+  border: 1px solid var(--gray3);
+  border-radius: 2.5rem;
+  color: var(--indigo6);
+}
+.navbar .user-menu .moon_btn:hover {
+  background-color: var(--gray2);
+}
+@media (min-width: 576px) {
+  .navbar .user-menu .moon_btn {
+    display: inline;
+  }
+}
+.navbar .user-menu a {
+  padding: 0.8rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  flex-shrink: 0;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--bgColor);
+  color: var(--textColor);
+}
+.navbar .user-menu a::after {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: -1.5px;
+  right: -1.5px;
+  bottom: -1px;
+  border-radius: 0.5rem;
+  background-image: var(--borderOuline);
+  z-index: -1;
+}
+.navbar .user-menu a:hover {
+  z-index: 0;
+  color: var(--logoText);
+}
+.navbar .user-menu .profile {
+  cursor: pointer;
+}
+.navbar .user-menu .profile img {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.navbar .user-menu .menu-icon {
+  font-size: 2.25rem;
+  text-align: center;
+  color: var(--gray6);
+  margin-top: 5px;
+  transition: all 1s ease;
+}
+.navbar .user-menu .menu-icon:hover {
+  transform: scale(1.2);
+}
+@media (min-width: 768px) {
+  .navbar .user-menu .menu-icon {
+    display: none;
+  }
+}
+.navbar .dropdown_menu {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  right: 0;
+  top: 3.7rem;
+  width: 15.8rem;
+  background-color: var(--gray1);
+  border-radius: 0.4rem;
+  box-shadow: 1px 0 4px var(--gray3);
+}
+@media (min-width: 768px) {
+  .navbar .dropdown_menu {
+    display: none;
+  }
+}
+.navbar .dropdown_menu a {
+  padding: 1rem 1.5rem;
+}
+.navbar .dropdown_menu a:hover {
+  background: var(--pink3);
+  font-weight: bold;
+}
+.navbar .dropdown_menu a.active {
+  color: var(--indigo6);
+  font-weight: bold;
+}
+.navbar .dropdown_menu span {
+  padding: 0.5rem 1.5rem;
+  font-size: 0.825rem;
+}
+.navbar .dropdown_menu span:nth-child(2) {
+  font-weight: bold;
+  border-bottom: 1px solid var(--gray3);
+}/*# sourceMappingURL=header.css.map */

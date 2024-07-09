@@ -1,50 +1,35 @@
-// @import "./variable";
-
+@charset "UTF-8";
 @import url("https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@2.0/nanumsquare.css");
-
 @font-face {
   font-family: "KyoboHand";
-  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/KyoboHand.woff")
-    format("woff");
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/KyoboHand.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
-
 :root {
   --bgColor: #ffff;
   --navbarBg: #fefefe;
   --borderLine: #e4e7ea;
   --textColor: #141414;
-  --logoText: #ffff; //
+  --logoText: #ffff;
   --inputBg: #f9fbfa;
-  // --dark1: #374150; //inputbg
-  // --dark2: #1f2937; //navbg
-  // --dark3: #0f172a; //bg
-  --gray1: #f1f3f5; //
-  --gray2: #e9ecef; //
+  --gray1: #f1f3f5;
+  --gray2: #e9ecef;
   --gray3: #dee2e6;
-  --gray4: #ced4da; //
+  --gray4: #ced4da;
   --gray5: #adb5bd;
-  --gray6: #868e96; //
-  // --gray7: #495057;
-  // --gray8: #343a40;
-  // --indigo2: #bac8ff;
-  --indigo4: #748ffc; //
-  --indigo6: #4c6ef5; //
+  --gray6: #868e96;
+  --indigo4: #748ffc;
+  --indigo6: #4c6ef5;
   --indigo7: #008cff;
   --pink3: #fce8e8;
   --pink4: #ff8a4c;
   --pink5: #e74694;
-  --pink6: #e64980; //
+  --pink6: #e64980;
   --pink7: #e100ff;
-  // --purple1: #774fee; //
-  // --purple2: #472290; //
-  // --purple3: #9160f6;
-  // --cyan2: #bfe0e2;
-  // --cyan3: #92cace;
-  --cyan4: #13b9b9; //
-  --cyan5: #438e96; //
-  --cyan9: #0f7695; //
+  --cyan4: #13b9b9;
+  --cyan5: #438e96;
+  --cyan9: #0f7695;
   --logo: linear-gradient(to right, var(--indigo6), var(--pink6));
   --googleBtn: linear-gradient(to bottom, var(--pink4), var(--pink5));
   --borderOuline: linear-gradient(
@@ -53,10 +38,7 @@
     var(--pink7)
   );
 }
-// .light {
-//   --bgColor: #ffff;
-//   --textColor: #000000;
-// }
+
 .dark {
   --bgColor: #0f172a;
   --textColor: #ffff;
@@ -64,6 +46,7 @@
   --borderLine: #343e4f;
   --inputBg: #374150;
 }
+
 /* box-sizing 규칙을 명시합니다. */
 *,
 *::before,
@@ -160,6 +143,7 @@ video {
   font: inherit;
   vertical-align: baseline;
 }
+
 /* HTML5 display-role reset for older browsers */
 article,
 aside,
@@ -174,11 +158,11 @@ nav,
 section {
   display: block;
 }
+
 body {
   line-height: 1;
   background: var(--bgColor);
   color: var(--textColor);
-  // font-family: "NanumSquare", sans-serif;
   font-family: "KyoboHand", sans-serif;
 }
 
@@ -186,10 +170,12 @@ ol,
 ul {
   list-style: none;
 }
+
 blockquote,
 q {
   quotes: none;
 }
+
 blockquote:before,
 blockquote:after,
 q:before,
@@ -197,10 +183,12 @@ q:after {
   content: "";
   content: none;
 }
+
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+
 a {
   text-decoration: none;
   color: inherit;
@@ -214,4 +202,4 @@ button {
   border: none;
   cursor: pointer;
   font-family: inherit;
-}
+}/*# sourceMappingURL=style.css.map */

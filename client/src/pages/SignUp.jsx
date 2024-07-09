@@ -85,7 +85,7 @@ export default function Signup() {
                 onChange={handleChange}
               />
             </div>
-            <button type="submit" disabled={loading}>
+            <button type="submit" disabled={loading} className="btn">
               {loading ? "로딩중" : "회원가입"}
             </button>
             <OAuth />

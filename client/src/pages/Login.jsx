@@ -82,7 +82,7 @@ export default function Login() {
                 onChange={handleChange}
               />
             </div>
-            <button type="submit" disabled={loading}>
+            <button type="submit" disabled={loading} className="btn">
               {loading ? "로딩중" : "로그인"}
             </button>
             <OAuth />
