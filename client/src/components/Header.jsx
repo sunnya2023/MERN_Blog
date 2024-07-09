@@ -5,6 +5,7 @@ import { FaMoon } from "react-icons/fa";
 import { IoMenu } from "react-icons/io5";
 import { useState } from "react";
 import { IoClose } from "react-icons/io5";
+import { useSelector } from "react-redux";
 
 export default function Header() {
   const [openmenu, setOpenMenu] = useState(false);
@@ -12,6 +13,8 @@ export default function Header() {
     setOpenMenu(!openmenu);
   };
   const path = useLocation().pathname;
+  const { currentUser } = useSelector((state) => state.user);
+  const [profileInfo, setProfileInfo] = useState(false);
   return (
     <div className="navbar">
       <Link to="/" className="logo">
@@ -45,19 +48,36 @@ export default function Header() {
         <button className="moon_btn">
           <FaMoon />
         </button>
-        <Link to="/login">로그인</Link>
-        {/* <Link to="/sign-in">Sign Up</Link> */}
+
+        {currentUser ? (
+          <div className="profile" onClick={() => setProfileInfo(!profileInfo)}>
+            <img src={currentUser.profilePictuer} alt={currentUser.username} />
+          </div>
+        ) : (
+          <Link to="/login">로그인</Link>
+        )}
 
         <button className="menu-icon" onClick={handleOpenMenu}>
           <IoMenu />
         </button>
       </div>
 
+      {profileInfo ? (
+        <div className="dropdown_menu">
+          <span>{currentUser.username}</span>
+          <span>{currentUser.email}</span>
+          <Link to="/dashboard?tab=profile">프로필</Link>
+          <Link to="/">로그아웃</Link>
+        </div>
+      ) : (
+        ""
+      )}
+
       {openmenu && (
-        <div className="dropdown_munu">
-          <button onClick={() => setOpenMenu(false)}>
+        <div className="dropdown_menu">
+          {/* <button onClick={() => setOpenMenu(false)}>
             <IoClose />
-          </button>
+          </button> */}
           <Link to="/" className={path === "/" ? "active" : ""}>
             Home
           </Link>
