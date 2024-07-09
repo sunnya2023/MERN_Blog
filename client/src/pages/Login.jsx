@@ -7,6 +7,7 @@ import {
   loginStart,
   loginSuccess,
 } from "../redux/user/userSlice";
+import OAuth from "../components/OAuth";
 
 export default function Login() {
   const [formData, setFormData] = useState({});
@@ -23,7 +24,6 @@ export default function Login() {
     e.preventDefault();
 
     try {
-      // setLoading(true);
       dispatch(loginStart());
       const res = await fetch("/api/auth/login", {
         method: "POST",
@@ -85,6 +85,7 @@ export default function Login() {
             <button type="submit" disabled={loading}>
               {loading ? "로딩중" : "로그인"}
             </button>
+            <OAuth />
           </form>
 
           <span>

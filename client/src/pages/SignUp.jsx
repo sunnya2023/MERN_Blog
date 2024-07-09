@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import "../style/page_style/signup.scss";
 import { useState } from "react";
+import OAuth from "../components/OAuth";
 
 export default function Signup() {
   const [formData, setFormData] = useState({});
@@ -87,6 +88,7 @@ export default function Signup() {
             <button type="submit" disabled={loading}>
               {loading ? "로딩중" : "회원가입"}
             </button>
+            <OAuth />
           </form>
 
           <span>

@@ -105,26 +105,10 @@
         padding: 0.5rem;
         border-radius: 0.3rem;
         font-size: 0.825rem;
+        @include sm {
+          max-width: 22.625rem;
+        }
       }
     }
   }
 }
-
-// .signup {
-//   margin: 3rem auto;
-//   height: 100vh;
-//   width: 100%;
-
-//   .content {
-//     display: flex;
-//     flex-direction: column;
-//     gap: 2rem;
-//     align-items: center;
-//     justify-content: center;
-
-//     @include sm {
-//       display: flex;
-//       flex-direction: row;
-//     }
-//   }
-// }
