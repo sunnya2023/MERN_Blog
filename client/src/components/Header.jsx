@@ -76,6 +76,9 @@ export default function Header() {
 
       {profileInfo ? (
         <div className="dropdown_menu">
+          <button onClick={() => setProfileInfo(false)} className="close-btn">
+            <IoClose />
+          </button>
           <span>{currentUser.username}</span>
           <span>{currentUser.email}</span>
           <Link to="/dashboard?tab=profile">프로필</Link>
@@ -87,9 +90,9 @@ export default function Header() {
 
       {openmenu && (
         <div className="dropdown_menu">
-          {/* <button onClick={() => setOpenMenu(false)}>
+          <button onClick={() => setOpenMenu(false)} className="close-btn">
             <IoClose />
-          </button> */}
+          </button>
           <Link to="/" className={path === "/" ? "active" : ""}>
             Home
           </Link>
