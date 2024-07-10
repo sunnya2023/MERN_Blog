@@ -17,15 +17,19 @@
   --textColor: #141414;
   --logoText: #ffff; //
   --inputBg: #f9fbfa;
+  --sidebarBg: #f8fafb;
+  --sidebarHigh: #f2f5f7; //
   // --dark1: #374150; //inputbg
   // --dark2: #1f2937; //navbg
   // --dark3: #0f172a; //bg
   --gray1: #f1f3f5; //
   --gray2: #e9ecef; //
+
   --gray3: #dee2e6;
   --gray4: #ced4da; //
   --gray5: #adb5bd;
   --gray6: #868e96; //
+  --gray7: #364150;
   // --gray7: #495057;
   // --gray8: #343a40;
   // --indigo2: #bac8ff;
@@ -60,9 +64,12 @@
 .dark {
   --bgColor: #0f172a;
   --textColor: #ffff;
-  --navbarBg: #1f2937;
+  --navbarBg: #1f2936;
   --borderLine: #343e4f;
-  --inputBg: #374150;
+  --inputBg: #364150;
+  --pink3: #868e96;
+  --sidebarBg: #1f2936;
+  --sidebarHigh: #364150;
 }
 /* box-sizing 규칙을 명시합니다. */
 *,
