@@ -1,4 +1,3 @@
-import { useLocation } from "react-router-dom";
 import "../style/component_style/dashboardSidebar.scss";
 import {
   HiUser,
