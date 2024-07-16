@@ -16,8 +16,10 @@ export const singup = async (req, res, next) => {
     // return res.status(400).json({ message: "All fields are required" });
     return next(errorHandler(400, "정보를 입력해주세요"));
   }
-  if (username.length < 2) {
-    return next(errorHandler(400, "이름은 최소 2글자 이상 입력해주세요"));
+  if (username.length < 2 || username.length > 20) {
+    return next(
+      errorHandler(400, "이름은 최소 2글자 이상 20자 내외로 입력해주세요")
+    );
   }
   const existingUser = await User.findOne({ email });
   if (existingUser) {
