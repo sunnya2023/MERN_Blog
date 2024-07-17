@@ -35,22 +35,23 @@
   // --gray7: #495057;
   // --gray8: #343a40;
   // --indigo2: #bac8ff;
-  --indigo4: #748ffc; //
-  --indigo6: #4c6ef5; //
+  --indigo4: #748ffc;
+  --indigo6: #4c6ef5;
   --indigo7: #008cff;
   --pink3: #fce8e8;
   --pink4: #ff8a4c;
   --pink5: #e74694;
-  --pink6: #e64980; //
+  --pink6: #e64980;
   --pink7: #e100ff;
-  // --purple1: #774fee; //
-  // --purple2: #472290; //
+  // --purple1: #774fee;
+  // --purple2: #472290;
   // --purple3: #9160f6;
   // --cyan2: #bfe0e2;
   // --cyan3: #92cace;
-  --cyan4: #13b9b9; //
-  --cyan5: #438e96; //
-  --cyan9: #0f7695; //
+  --cyan4: #bdeedb;
+  // --cyan4: #13b9b9;
+  --cyan5: #438e96;
+  --cyan9: #0f7695;
   --logo: linear-gradient(to right, var(--indigo6), var(--pink6));
   --googleBtn: linear-gradient(to bottom, var(--pink4), var(--pink5));
   --borderOuline: linear-gradient(
@@ -228,4 +229,8 @@ button {
 
 .hide {
   @include hide;
+}
+
+.error {
+  @include error;
 }

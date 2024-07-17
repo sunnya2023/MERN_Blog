@@ -63,7 +63,7 @@ export default function Header() {
 
         {currentUser ? (
           <div className="profile" onClick={() => setProfileInfo(!profileInfo)}>
-            <img src={currentUser.profilePictuer} alt={currentUser.username} />
+            <img src={currentUser.profilePicture} alt={currentUser.username} />
           </div>
         ) : (
           <Link to="/login">로그인</Link>

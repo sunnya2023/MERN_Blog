@@ -9,6 +9,15 @@
   //   clip-path: inset(50%);
 }
 
+@mixin error {
+  margin-top: 0.5rem;
+  background: var(--pink3);
+  color: red;
+  padding: 0.825rem;
+  border-radius: 0.3rem;
+  font-size: 0.825rem;
+}
+
 @mixin xs {
   @media (min-width: 576px) {
     @content;

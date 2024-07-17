@@ -38,14 +38,14 @@
         }
       }
     }
-    .error {
-      margin-top: 0.825rem;
-      background: var(--pink3);
-      color: red;
-      padding: 0.825rem;
-      border-radius: 0.3rem;
-      font-size: 0.825rem;
-    }
+    // .error {
+    //   margin-top: 0.825rem;
+    //   background: var(--pink3);
+    //   color: red;
+    //   padding: 0.825rem;
+    //   border-radius: 0.3rem;
+    //   font-size: 0.825rem;
+    // }
     input {
       width: 100%;
       border-radius: 0.5rem;
@@ -88,8 +88,20 @@
     }
   }
   .deleteAccount {
-    margin-top: 2rem;
+    margin: 1.5rem 0;
     color: var(--pink4);
     text-align: end;
+    display: flex;
+    justify-content: space-between;
+    span {
+      cursor: pointer;
+    }
+  }
+  .successMsg {
+    background: #bdeedb;
+    color: var(--cyan9);
+    padding: 0.825rem;
+    border-radius: 0.3rem;
+    font-size: 0.825rem;
   }
 }
