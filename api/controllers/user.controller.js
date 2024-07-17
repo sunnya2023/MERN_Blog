@@ -52,3 +52,15 @@ export const updateUser = async (req, res, next) => {
     console.log(error.message);
   }
 };
+
+export const deleteUser = async (req, res, next) => {
+  if (req.user.id !== req.params.userId) {
+    return next(errorHandler(403, "삭제 권한이 없습니다."));
+  }
+  try {
+    await User.findByIdAndDelete(req.params.userId);
+    res.status(200).json("계정이 삭제되었습니다.");
+  } catch (error) {
+    next(error);
+  }
+};
