@@ -14,6 +14,7 @@ import {
   delereFailure,
   deleteStart,
   deleteSuccess,
+  logoutSuccess,
   updateFailure,
   updateStart,
   updateSuccess,
@@ -142,6 +143,21 @@ export default function DashProfile() {
     }
   };
 
+  const handleLogout = async () => {
+    try {
+      const res = await fetch("/api/user/logout", {
+        method: "POST",
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        console.log(data.message);
+      } else {
+        dispatch(logoutSuccess());
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
   return (
     <div className="dashProfile">
       <h1>프로필</h1>
@@ -199,7 +215,7 @@ export default function DashProfile() {
       </form>
       <div className="deleteAccount">
         <span onClick={() => setShowModal(true)}>탈퇴하기</span>
-        <span>로그아웃</span>
+        <span onClick={handleLogout}>로그아웃</span>
       </div>
       {successMsg && <div className="successMsg">{successMsg}</div>}
       {updateError && <div className="error">{updateError}</div>}

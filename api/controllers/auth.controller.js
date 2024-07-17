@@ -125,7 +125,7 @@ export const google = async (req, res, next) => {
       const { password, ...rest } = newUser._doc;
       res
         .status(200)
-        .cookie("access_toke", token, {
+        .cookie("access_token", token, {
           maxAge: 30 * 24 * 60 * 60 * 1000,
           httpOnly: true,
           sameSite: "strict",

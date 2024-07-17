@@ -7,18 +7,19 @@ import { useEffect, useState } from "react";
 import { IoClose } from "react-icons/io5";
 import { useSelector, useDispatch } from "react-redux";
 import { toggleTheme } from "../redux/theme/themeSlice";
+import { logoutSuccess } from "../redux/user/userSlice";
 
 export default function Header() {
   const [openmenu, setOpenMenu] = useState(false);
-  const handleOpenMenu = () => {
-    setOpenMenu(!openmenu);
-  };
+  // const handleOpenMenu = () => {
+  //   setOpenMenu(!openmenu);
+  // };
   const path = useLocation().pathname;
   const { currentUser } = useSelector((state) => state.user);
   const { theme } = useSelector((state) => state.theme);
   const dispatch = useDispatch();
 
-  const [profileInfo, setProfileInfo] = useState(false);
+  const [profileMenu, setProfileMenu] = useState(false);
   useEffect(() => {
     if (theme === "dark") {
       document.body.classList.add("dark");
@@ -26,6 +27,22 @@ export default function Header() {
       document.body.classList.remove("dark");
     }
   }, [theme]);
+
+  const handleLogout = async () => {
+    try {
+      const res = await fetch("/api/user/logout", {
+        method: "POST",
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        console.log(data.message);
+      } else {
+        dispatch(logoutSuccess());
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
 
   return (
     <div className="navbar">
@@ -62,27 +79,29 @@ export default function Header() {
         </button>
 
         {currentUser ? (
-          <div className="profile" onClick={() => setProfileInfo(!profileInfo)}>
+          <div className="profile" onClick={() => setProfileMenu(!profileMenu)}>
             <img src={currentUser.profilePicture} alt={currentUser.username} />
           </div>
         ) : (
           <Link to="/login">로그인</Link>
         )}
 
-        <button className="menu-icon" onClick={handleOpenMenu}>
+        <button className="menu-icon" onClick={() => setOpenMenu(!openmenu)}>
           <IoMenu />
         </button>
       </div>
 
-      {profileInfo ? (
-        <div className="dropdown_menu">
-          <button onClick={() => setProfileInfo(false)} className="close-btn">
+      {currentUser && profileMenu ? (
+        <div className="dropdown_menu" onClick={() => setProfileMenu(false)}>
+          <button className="close-btn">
             <IoClose />
           </button>
           <span>{currentUser.username}</span>
           <span>{currentUser.email}</span>
           <Link to="/dashboard?tab=profile">프로필</Link>
-          <Link to="/">로그아웃</Link>
+          <Link to="/" onClick={handleLogout}>
+            로그아웃
+          </Link>
         </div>
       ) : (
         ""
