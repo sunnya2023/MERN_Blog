@@ -11,14 +11,18 @@ import { app } from "../firebase";
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import {
+  delereFailure,
+  deleteStart,
+  deleteSuccess,
   updateFailure,
   updateStart,
   updateSuccess,
 } from "../redux/user/userSlice";
+import { IoClose } from "react-icons/io5";
 
 export default function DashProfile() {
   const dispatch = useDispatch();
-  const { currentUser } = useSelector((state) => state.user);
+  const { currentUser, error } = useSelector((state) => state.user);
   //이미지 변경
   const [imgFile, setImgFile] = useState(null);
   const [imgFileURL, setImgFileURL] = useState(null);
@@ -27,6 +31,7 @@ export default function DashProfile() {
   const [formData, setFormData] = useState({});
   const [successMsg, setSuccessMsg] = useState(null);
   const [updateError, setUpdateError] = useState(null);
+  const [showModal, setShowModal] = useState(false);
   //이미지 변경
   const handleImgChange = (e) => {
     const file = e.target.files[0];
@@ -119,6 +124,24 @@ export default function DashProfile() {
   };
   console.log(formData);
 
+  const handleDeleteUser = async () => {
+    setShowModal(false);
+    try {
+      dispatch(deleteStart());
+      const res = await fetch(`/api/user/delete/${currentUser._id}`, {
+        method: "DELETE",
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        dispatch(delereFailure(data.message));
+      } else {
+        dispatch(deleteSuccess(data));
+      }
+    } catch (error) {
+      dispatch(delereFailure(error.message));
+    }
+  };
+
   return (
     <div className="dashProfile">
       <h1>프로필</h1>
@@ -175,11 +198,41 @@ export default function DashProfile() {
         </button>
       </form>
       <div className="deleteAccount">
+        <span onClick={() => setShowModal(true)}>탈퇴하기</span>
         <span>로그아웃</span>
-        <span>탈퇴하기</span>
       </div>
       {successMsg && <div className="successMsg">{successMsg}</div>}
       {updateError && <div className="error">{updateError}</div>}
+      {error && <div className="error">{error}</div>}
+      {showModal && (
+        <div className="modal">
+          <div className="modal-box">
+            <div
+              className="close"
+              onClick={() => {
+                setShowModal(false);
+              }}
+            >
+              <IoClose />
+            </div>
+            <div className="modal-content">
+              <p>계정을 삭제하시겠습니까?</p>
+              <div className="select-btn">
+                <button className="confirm" onClick={handleDeleteUser}>
+                  예
+                </button>
+                <button
+                  onClick={() => {
+                    setShowModal(false);
+                  }}
+                >
+                  아니오
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

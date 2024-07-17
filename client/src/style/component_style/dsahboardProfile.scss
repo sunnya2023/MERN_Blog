@@ -105,3 +105,59 @@
     font-size: 0.825rem;
   }
 }
+.modal {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  .modal-box {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--logoText);
+    width: 100%;
+    max-width: 20rem;
+    padding: 2rem;
+    border-radius: 0.5rem;
+
+    .close {
+      position: absolute;
+      top: 12px;
+      right: 15px;
+      font-size: 1.3rem;
+      color: var(--gray6);
+      cursor: pointer;
+    }
+    .modal-content {
+      margin-top: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+      color: var(--gray7);
+      .select-btn {
+        display: flex;
+        gap: 1.6rem;
+        flex-shrink: 0;
+        button {
+          width: 3.5rem;
+          padding: 0.5rem 0;
+          border-radius: 0.5rem;
+          border: 1px solid var(--gray3);
+          // color: var(--gray6);
+          transition: all 1s ease;
+          &.confirm {
+            background-color: red;
+            color: var(--logoText);
+          }
+          &:hover {
+            transform: scale(1.12);
+          }
+        }
+      }
+    }
+  }
+}
