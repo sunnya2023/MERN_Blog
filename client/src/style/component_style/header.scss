@@ -97,7 +97,6 @@
     align-items: center;
     gap: 0.8rem;
     margin-left: 1rem;
-    z-index: 1000;
 
     .moon_btn {
       display: none;
@@ -180,9 +179,10 @@
     border-radius: 0.4rem;
     box-shadow: 1px 0 4px var(--gray3);
     padding: 0.825rem 0 0.5rem;
+    z-index: 1000;
     .close-btn {
       position: absolute;
-      top: 5px;
+      top: 6.5px;
       right: 10px;
       font-size: 1.5rem;
       color: var(--gray6);

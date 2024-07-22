@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from "react";
 import "../style/component_style/dsahboardProfile.scss";
+import { useEffect, useRef, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   getDownloadURL,
@@ -20,13 +20,15 @@ import {
   updateSuccess,
 } from "../redux/user/userSlice";
 import { IoClose } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
 export default function DashProfile() {
   const dispatch = useDispatch();
-  const { currentUser, error } = useSelector((state) => state.user);
+  const { currentUser, error, loading } = useSelector((state) => state.user);
   //이미지 변경
   const [imgFile, setImgFile] = useState(null);
   const [imgFileURL, setImgFileURL] = useState(null);
+  const [imgFileUploading, setImgFileUploading] = useState(false);
   const imgRef = useRef();
   const MAX_FILE_SIZE = 2 * 1024 * 1024;
   const [formData, setFormData] = useState({});
@@ -56,6 +58,7 @@ export default function DashProfile() {
   // console.log(uploadProgress, uploadError);
   const uploadImg = async () => {
     // setUploadError(null);
+    setImgFileUploading(true);
     const storage = getStorage(app);
     const fileName = new Date().getTime() + imgFile.name;
     const storageRef = ref(storage, fileName);
@@ -73,12 +76,14 @@ export default function DashProfile() {
         setUploadError("이미지는 2MB이하만 등록해주세요.");
         setUploadProgress(null);
         setImgFile(null);
+        setImgFileUploading(false);
         // setImgFileURL(null);
       },
       () => {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
           setImgFileURL(downloadURL);
           setFormData({ ...formData, profilePicture: downloadURL });
+          setImgFileUploading(false);
         });
       }
     );
@@ -99,6 +104,10 @@ export default function DashProfile() {
     setUpdateError(null);
     setSuccessMsg(null);
     if (Object.keys(formData).length === 0) {
+      return;
+    }
+    if (imgFileUploading) {
+      setImgFileUploading("이미지가 업로드 중입니다.");
       return;
     }
     try {
@@ -158,6 +167,8 @@ export default function DashProfile() {
       console.log(error.message);
     }
   };
+
+  console.log(imgFileUploading);
   return (
     <div className="dashProfile">
       <h1>프로필</h1>
@@ -209,9 +220,18 @@ export default function DashProfile() {
           placeholder="비밀번호"
           onChange={handleChange}
         />
-        <button type="submit" className="edit-btn">
-          수정하기
+        <button
+          type="submit"
+          className="edit-btn"
+          disabled={loading || imgFileUploading}
+        >
+          {loading ? "로딩중..." : "수정하기"}
         </button>
+        {currentUser.isAdmin && (
+          <Link to="/create-post" className="create-btn">
+            게시글 작성하기
+          </Link>
+        )}
       </form>
       <div className="deleteAccount">
         <span onClick={() => setShowModal(true)}>탈퇴하기</span>

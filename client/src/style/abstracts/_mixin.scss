@@ -9,6 +9,20 @@
   //   clip-path: inset(50%);
 }
 
+@mixin create-btn {
+  width: 100%;
+  border-radius: 0.5rem;
+  padding: 0.825rem;
+  background: var(--logo);
+  color: var(--logoText);
+  font-size: 1rem;
+  text-align: center;
+
+  &:hover {
+    background: linear-gradient(to bottom right, var(--pink7), var(--indigo7));
+  }
+}
+
 @mixin error {
   margin-top: 0.5rem;
   background: var(--pink3);

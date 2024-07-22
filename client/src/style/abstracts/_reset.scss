@@ -227,10 +227,18 @@ button {
   font-family: inherit;
 }
 
+.ql-editor {
+  font-size: 1.05rem;
+}
+
 .hide {
   @include hide;
 }
 
 .error {
   @include error;
+}
+
+.create-btn {
+  @include create-btn;
 }
