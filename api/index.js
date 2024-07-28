@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import userRoutes from "./routes/user.route.js";
 import authRoutes from "./routes/auth.route.js";
+import postRoutes from "./routes/post.route.js";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 
@@ -11,7 +12,7 @@ dotenv.config();
 mongoose
   .connect(process.env.MONGO)
   .then(() => {
-    console.log("MongoDB is connected");
+    console.log("MongoDb is connected");
   })
   .catch((err) => {
     console.log(err);
@@ -29,6 +30,7 @@ app.listen(PORT, () => {
 
 app.use("/api/user", userRoutes);
 app.use("/api/auth", authRoutes);
+app.use("/api/post", postRoutes);
 
 // 에러 미들웨어
 app.use((err, req, res, next) => {
