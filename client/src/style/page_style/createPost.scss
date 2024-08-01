@@ -3,7 +3,7 @@
 .create-post {
   margin: 3rem auto;
   max-width: 48rem;
-  height: 100vh;
+  height: 100%;
   h1 {
     text-align: center;
     font-size: 1.5rem;
@@ -116,6 +116,12 @@
         color: var(--textColor);
         background: var(--inputBg);
       }
+    }
+
+    .post-img {
+      width: 100%;
+      height: 17rem;
+      object-fit: cover;
     }
     .quill {
       height: 17rem;
