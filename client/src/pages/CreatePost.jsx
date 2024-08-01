@@ -12,6 +12,7 @@ import { app } from "../firebase";
 
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
+import { useNavigate } from "react-router-dom";
 
 export default function CreatePost() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -21,6 +22,14 @@ export default function CreatePost() {
   const [uploadProgress, setUploadProgress] = useState(0);
   const [uploadError, setUploadError] = useState(null);
   const [formData, setFormData] = useState({});
+  const [publishError, setPublishError] = useState();
+
+  const navigate = useNavigate();
+
+  const handleCategorySelect = (category) => {
+    setFormData({ ...formData, category });
+    setMenuOpen(false);
+  };
 
   const handleUploadImg = async (e) => {
     e.preventDefault();
@@ -62,28 +71,74 @@ export default function CreatePost() {
       console.log(error);
     }
   };
-  console.log(uploadProgress);
+  // console.log(uploadProgress);
+  // console.log(formData);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await fetch("/api/post/create", {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        setPublishError(data.message);
+        return;
+      }
+      if (res.ok) {
+        setPublishError(null);
+        navigate(`/post/${data.slug}`);
+      }
+    } catch (error) {
+      setPublishError(error.message);
+    }
+  };
+
   return (
     <div className="create-post">
       <h1>게시글 작성하기</h1>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className="titleBox">
-          <input type="text" placeholder="제목" />
+          <input
+            type="text"
+            placeholder="제목"
+            onChange={(e) =>
+              setFormData({ ...formData, title: e.target.value })
+            }
+          />
 
           <div className="dropdown">
             <div className="select" onClick={() => setMenuOpen(!menuOpen)}>
-              <span className="selected">카테고리 선택</span>
+              <span className="selected">
+                {formData.category || "카테고리 선택"}
+              </span>
 
               <img src="/drop-down.svg" />
             </div>
             <ul
               className={menuOpen ? "menu" : "menu hide"}
-              onClick={() => setMenuOpen(!menuOpen)}
+              // onClick={() => setMenuOpen(!menuOpen)}
             >
-              <li>Javascript</li>
-              <li>React.js</li>
-              <li>Next.js</li>
-              <li>Node.js</li>
+              {/* <li onClick={() => handleCategorySelect("Javascript")}>
+                Javascript
+              </li>
+              <li onClick={() => handleCategorySelect("React.js")}>React.js</li>
+              <li onClick={() => handleCategorySelect("Next.js")}>Next.js</li>
+              <li onClick={() => handleCategorySelect("Node.js")}>Node.js</li> */}
+              {["Javascript", "React.js", "Next.js", "Node.js"].map(
+                (category) => (
+                  <li
+                    key={category}
+                    onClick={() => handleCategorySelect(category)}
+                  >
+                    {category}
+                  </li>
+                )
+              )}
             </ul>
           </div>
         </div>
@@ -127,14 +182,14 @@ export default function CreatePost() {
         <ReactQuill
           theme="snow"
           placeholder="게시글을 작성해주세요"
-          value={value}
-          onChange={setValue}
+          onChange={(value) => setFormData({ ...formData, content: value })}
           className="quill"
           required
         />
         <button type="submit" className="create-btn">
           업로드
         </button>
+        {publishError && <div className="error">{publishError}</div>}
       </form>
     </div>
   );
