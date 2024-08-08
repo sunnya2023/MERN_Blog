@@ -20,7 +20,8 @@
   --logoText: #ffff; //
   --inputBg: #f9fbfa;
   --sidebarBg: #f8fafb;
-  --sidebarHigh: #f2f5f7; //
+  --sidebarHigh: #f2f5f7;
+  --badgeColor: #adb5bd;
   // --dark1: #374150; //inputbg
   // --dark2: #1f2937; //navbg
   // --dark3: #0f172a; //bg
@@ -74,6 +75,7 @@
   --sidebarBg: #1f2936;
   --sidebarHigh: #364150;
   --textcolor2: #fefefe;
+  --badgeColor: #0f172a;
 }
 /* box-sizing 규칙을 명시합니다. */
 *,
